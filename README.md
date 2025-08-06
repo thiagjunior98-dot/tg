@@ -1,1 +1,18 @@
-https://auth.platorelay.com/a?d=qMPDca9jh9tV44QfiaMPZzkaJEqv6LXlJErlKC9JGqFhnvmGlmK7lC1I2CmAkNXN9iBhrZHUanCGt7fJh1rnQztXfafHrBu5T5Oa9ptxsL04qBUB0P7sB81XgzB3YhC64UW631iIMKiZ5oKACdbwUptNB6312W4mVAGStyjJjMDM6q1qptptjW0zvgIiTAwmETHNaDHyNaLKh5VVndw39BkU8GnkUVkK3TMY4UNpvYtjGrbXdtLTYQgDGJ6d5mLv4Fs0nSACu9bgCyxMOyvrZIUKF4GCUWWNawc7fRYbuuwt1COzUXJ90iw4iH8kiDK9wlyHh93K8oAma5nUXUl5ZWaYVa1eW5uYEyvCe7JAWQMHB7rSBc3IwwQ83c66nbFixPlSJfjfGWMgXZ415BNc1fKPdPzW3h5SmhpbzsE9weuDmn6TwxzpYhabpMozmV
+local player = game.Players.LocalPlayer
+local character = player.Character or player.CharacterAdded:Wait()
+local humanoid = character:WaitForChild("Humanoid")
+local tool = nil
+
+-- Espera até que o jogador esteja com uma espada ou ferramenta equipada
+while not tool do
+    tool = character:FindFirstChildOfClass("Tool")
+    wait()
+end
+
+-- Loop de ataque automático
+while true do
+    if tool and humanoid.Health > 0 then
+        tool:Activate()
+    end
+    wait(0.1) -- A velocidade do ataque (quanto menor, mais rápido)
+end
